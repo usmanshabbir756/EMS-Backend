@@ -5,7 +5,11 @@ import com.usman.ems.dto.EmployeeDto;
 import com.usman.ems.entity.Employee;
 import com.usman.ems.mapper.EmployeeMapper;
 import com.usman.ems.repository.EmployeeRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService{
     private EmployeeRepository employeeRepository;
     @Override

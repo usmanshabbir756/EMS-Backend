@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @RestController
@@ -22,9 +24,32 @@ public class EmployeeController {
         return new ResponseEntity<>(saveEmployee, HttpStatus.CREATED);
     }
 
+    //Get Employee By id
     @GetMapping("{id}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId){
         EmployeeDto employeeDto=employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employeeDto);
+    }
+
+    //Get All Employee
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>> getAllEmployee(){
+        List<EmployeeDto> employees=employeeService.getAllEmployees();
+        return ResponseEntity.ok(employees);
+    }
+
+    //Update Employee Data
+    @PutMapping("{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId,
+                                                      @RequestBody EmployeeDto updatedEpmloyee){
+        EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updatedEpmloyee);
+        return ResponseEntity.ok(employeeDto);
+    }
+
+    //Delete Employee by Id
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") Long employeeId){
+        employeeService.deleteEmployeeById(employeeId);
+        return ResponseEntity.ok("Deleted Successfully");
     }
 }

@@ -27,4 +27,8 @@ public class Employee {
     @Column(name = "email" , nullable = false , unique = true)
     private String email;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department-id")
+    private Department department;
+
 }

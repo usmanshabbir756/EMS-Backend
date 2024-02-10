@@ -9,6 +9,7 @@ import com.usman.ems.repository.DepartmentRepository;
 import com.usman.ems.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     private EmployeeRepository employeeRepository;
     private DepartmentRepository departmentRepository;
     @Override
+    @Transactional
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
         Employee employee= EmployeeMapper.mapToEmployee(employeeDto);
         Department department=departmentRepository.findById(employeeDto.getDepartmentId())

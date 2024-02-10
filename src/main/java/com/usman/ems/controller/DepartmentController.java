@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
@@ -26,13 +28,13 @@ public class DepartmentController {
 
     // http://localhost:8080/api/department/1
     @GetMapping("{id}")
-    public ResponseEntity<DepartmentDto> getDeparmentById(@PathVariable("id") Long deparmentId ){
-        DepartmentDto departmentDto=departmentService.getDeparmentById(deparmentId);
+    public ResponseEntity<DepartmentDto> getDepartmentById(@PathVariable("id") Long departmentId ){
+        DepartmentDto departmentDto=departmentService.getDeparmentById(departmentId);
         return ResponseEntity.ok(departmentDto);
     }
 
     // http://localhost:8080/api/department
-    @GetMapping
+    @GetMapping //(Pageable pageable)
     public List<DepartmentDto> getAllDepartment(){
         return departmentService.getAllDepartment();
     }

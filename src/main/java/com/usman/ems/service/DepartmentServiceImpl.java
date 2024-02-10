@@ -57,6 +57,7 @@ public class DepartmentServiceImpl implements DepartmentService{
         Department department = departmentRepository.findById(departmentId).orElseThrow(
                 ()-> new ResponseNotFoundException("Department not Found of id : " + departmentId)
         );
+        System.out.println(departmentId);
         departmentRepository.deleteById(departmentId);
         return "Deleted successfully";
     }
